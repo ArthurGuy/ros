@@ -13,15 +13,15 @@ sense.clear()
 
 
 def get_data():
-	try:
-    	dir = sense.get_orientation_degrees()
-	    msg_dir = Float32()
-    	msg_dir.data = float(dir)
-	    pub_heading.publish(msg_dir)
-	except TypeError:
-		rospy.loginfo(dir)
-	
-    
+    try:
+        dir = sense.get_orientation_degrees()
+        msg_dir = Float32()
+        msg_dir.data = float(dir)
+        pub_heading.publish(msg_dir)
+    except TypeError:
+        rospy.loginfo(dir)
+
+
     msg_humidity = Float32()
     msg_humidity.data = float(sense.get_humidity())
     pub_humidity.publish(msg_humidity)
