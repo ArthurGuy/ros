@@ -15,7 +15,7 @@ sense.clear()
 def get_cmd_vel(data):
     x = data.linear.x
     angular = data.angular.z
-    sense.clear([x, angular, 0])
+    sense.clear([data.linear.x, data.linear.y, data.linear.z])
     #self.send_cmd_to_arduino(x, angular)
 
 def get_bearing():
