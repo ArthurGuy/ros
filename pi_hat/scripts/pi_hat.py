@@ -45,8 +45,6 @@ pub_pressure = rospy.Publisher('~pressure', Float32, queue_size=1)
 
 pub_temperature = rospy.Publisher('Temperature', Temperature, queue_size=1)
 
-sense.show_message("Started")
-
 
 while not rospy.is_shutdown():
     try:
