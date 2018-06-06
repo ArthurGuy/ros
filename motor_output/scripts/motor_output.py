@@ -21,7 +21,7 @@ def get_cmd_vel(data):
 
 def get_new_temp(data):
 	temperature = int(data.temperature)
-	sense.show_message("Temp: " + str(temperature))
+	sense.show_message(str(temperature))
 	#sense.set_pixel(0, 0, int(data.temperature), 0, 255)
 
 
