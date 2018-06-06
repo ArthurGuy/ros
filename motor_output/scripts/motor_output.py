@@ -10,6 +10,8 @@ sense = SenseHat()
 sense.set_rotation(0)
 sense.clear()
 
+pub_heading = rospy.Publisher('~bearing', Float32, queue_size=1)
+
 class driver:
     def __init__(self):
         # init ros
@@ -21,7 +23,7 @@ class driver:
         #self.ser = serial.Serial('/dev/ttyUSB0', 115200)
         #self.get_arduino_message()
         
-        pub_heading = rospy.Publisher('~bearing', Float32, queue_size=1)
+        
         
         self.get_bearing()
 
