@@ -5,6 +5,7 @@ from geometry_msgs.msg import Twist
 from sensor_msgs.msg import Imu, MagneticField
 import serial
 from sense_hat import SenseHat
+import time
 
 sense = SenseHat()
 sense.set_rotation(0)
@@ -27,7 +28,7 @@ sense.show_message("Started")
 
 while not rospy.is_shutdown():
     try:
-        
+        time.sleep(1)
     
     except (KeyboardInterrupt, SystemExit):
         raise 
