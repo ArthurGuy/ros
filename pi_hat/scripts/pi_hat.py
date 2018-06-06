@@ -36,7 +36,7 @@ def get_data():
     msg_pressure.data = sense.get_pressure()
     pub_pressure.publish(msg_pressure)
     
-    time.sleep(1)
+    time.sleep(5)
     
     
 rospy.init_node('pi_hat_sensors', anonymous=True)
