@@ -6,6 +6,9 @@ from sensor_msgs.msg import Imu, MagneticField
 import serial
 from sense_hat import SenseHat
 
+sense = SenseHat()
+sense.set_rotation(0)
+sense.clear()
 
 class driver:
     def __init__(self):
@@ -13,7 +16,6 @@ class driver:
         rospy.init_node('car_driver', anonymous=True)
         rospy.Subscriber('/cmd_vel', Twist, self.get_cmd_vel)
         
-        sense = SenseHat()
         sense.show_message("Started")
         
         #self.ser = serial.Serial('/dev/ttyUSB0', 115200)
