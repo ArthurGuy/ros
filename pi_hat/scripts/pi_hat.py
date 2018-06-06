@@ -30,8 +30,8 @@ def get_data():
     msg_temp.temperature = sense.get_temperature()
     pub_temperature.publish(msg_temp)
     
-    msg_pressure = Temperature()
-    msg_pressure.temperature = sense.get_pressure()
+    msg_pressure = Float32()
+    msg_pressure.data = sense.get_pressure()
     pub_pressure.publish(msg_pressure)
     
     rospy.loginfo(data)
