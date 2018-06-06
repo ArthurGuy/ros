@@ -6,6 +6,7 @@ from sensor_msgs.msg import Imu, MagneticField, Temperature
 import serial
 from sense_hat import SenseHat
 import traceback
+import time
 
 sense = SenseHat()
 sense.set_rotation(0)
@@ -34,6 +35,8 @@ def get_data():
     msg_pressure = Float32()
     msg_pressure.data = sense.get_pressure()
     pub_pressure.publish(msg_pressure)
+    
+    time.sleep(1)
     
     
 rospy.init_node('pi_hat_sensors', anonymous=True)
