@@ -34,8 +34,6 @@ def get_data():
     msg_pressure.data = sense.get_pressure()
     pub_pressure.publish(msg_pressure)
     
-    rospy.loginfo(data)
-    
     
 rospy.init_node('pi_hat_sensors', anonymous=True)
 pub_heading = rospy.Publisher('~bearing', Float32, queue_size=1)
