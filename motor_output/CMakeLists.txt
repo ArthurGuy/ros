@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(motor_driver)
+project(motor_output)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -101,7 +101,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES motor_driver
+#  LIBRARIES motor_output
 #  CATKIN_DEPENDS geometry_msgs rospy std_msgs
 #  DEPENDS system_lib
 )
