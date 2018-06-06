@@ -16,7 +16,7 @@ def get_cmd_vel(data):
     rospy.loginfo(data)
     x = data.linear.x
     angular = data.angular.z
-    sense.clear([data.linear.x, data.linear.y, data.linear.z])
+    sense.clear([int(data.linear.x), int(data.linear.y), int(data.linear.z)])
     #self.send_cmd_to_arduino(x, angular)
 
 def get_bearing():
