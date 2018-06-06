@@ -10,13 +10,8 @@ sense = SenseHat()
 sense.set_rotation(0)
 sense.clear()
 
-rospy.init_node('car_driver', anonymous=True)
-rospy.Subscriber('/cmd_vel', Twist, get_cmd_vel)
-pub_heading = rospy.Publisher('~bearing', Float32, queue_size=1)
 
-sense.show_message("Started")
 
-# get cmd_vel message, and get linear velocity and angular velocity
 def get_cmd_vel(data):
     x = data.linear.x
     angular = data.angular.z
@@ -28,6 +23,13 @@ def get_bearing():
     msg_dir = Float32()
     msg_dir.data = float(dir)
     pub_heading.publish(msg_dir)
+    
+    
+rospy.init_node('car_driver', anonymous=True)
+rospy.Subscriber('/cmd_vel', Twist, get_cmd_vel)
+pub_heading = rospy.Publisher('~bearing', Float32, queue_size=1)
+
+sense.show_message("Started")
 
 
 while not rospy.is_shutdown():
