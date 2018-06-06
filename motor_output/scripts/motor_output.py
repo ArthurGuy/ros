@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 import rospy
-from std_msgs.msg import String
+from std_msgs.msg import String, Float32
 from geometry_msgs.msg import Twist
+from sensor_msgs.msg import Imu, MagneticField
 import serial
 from sense_hat import SenseHat
 
@@ -17,6 +18,10 @@ class driver:
         
         #self.ser = serial.Serial('/dev/ttyUSB0', 115200)
         #self.get_arduino_message()
+        
+        pub_heading = rospy.Publisher('~bearing', Float32, queue_size=1)
+        
+        self.get_bearing()
 
     # get cmd_vel message, and get linear velocity and angular velocity
     def get_cmd_vel(self, data):
@@ -24,6 +29,12 @@ class driver:
         angular = data.angular.z
         sense.clear([x, angular, 0])
         #self.send_cmd_to_arduino(x, angular)
+        
+    def get_bearing(self):
+        dir = sense.get_compass()
+        msg_dir = Float32()
+        msg_dir.data = float(dir)
+        pub_heading.publish(msg_dir)
 
     # translate x, and angular velocity to PWM signal of each wheels, and send to arduino
     def send_cmd_to_arduino(self, x, angular):
