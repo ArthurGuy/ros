@@ -2,7 +2,7 @@
 import rospy
 from std_msgs.msg import String, Float32
 from geometry_msgs.msg import Twist
-from sensor_msgs.msg import Imu, MagneticField
+from sensor_msgs.msg import Imu, MagneticField, Temperature
 import serial
 from sense_hat import SenseHat
 import time
@@ -19,9 +19,16 @@ def get_cmd_vel(data):
     angular = data.angular.z
     sense.clear([int(data.linear.x), int(data.linear.y), int(data.linear.z)])
 
+def get_new_temp(data):
+	colour = int(data.temperature)
+	sense.show_message(colour)
+	#sense.set_pixel(0, 0, int(data.temperature), 0, 255)
+
+
 
 rospy.init_node('motor_output', anonymous=True)
 rospy.Subscriber('/cmd_vel', Twist, get_cmd_vel)
+rospy.Subscriber('/Temperature', Temperature, get_new_temp)
 
 sense.show_message("Started")
 
