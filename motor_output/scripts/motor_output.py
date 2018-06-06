@@ -13,6 +13,7 @@ sense.clear()
 
 
 def get_cmd_vel(data):
+    rospy.loginfo(data)
     x = data.linear.x
     angular = data.angular.z
     sense.clear([data.linear.x, data.linear.y, data.linear.z])
