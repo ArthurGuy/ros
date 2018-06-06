@@ -5,6 +5,7 @@ from geometry_msgs.msg import Twist
 from sensor_msgs.msg import Imu, MagneticField, Temperature
 import serial
 from sense_hat import SenseHat
+import traceback
 
 sense = SenseHat()
 sense.set_rotation(0)
