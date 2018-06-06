@@ -20,8 +20,8 @@ def get_cmd_vel(data):
     sense.clear([int(data.linear.x), int(data.linear.y), int(data.linear.z)])
 
 def get_new_temp(data):
-	colour = int(data.temperature)
-	sense.show_message(colour)
+	temperature = int(data.temperature)
+	sense.show_message("Temp: " + str(temperature))
 	#sense.set_pixel(0, 0, int(data.temperature), 0, 255)
 
 
